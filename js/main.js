@@ -53,9 +53,11 @@ function draw() {
   }
 
   if (rightPressed && paddleX < canvas.width - paddleWidth) {
-    paddleX += 7;
+    paddleX += 7; //右を押したらパドルを7動かす
+    //paddleXの範囲もcanvas内として定義する
   } else if (leftPressed && paddleX > 0) {
-    paddleX -= 7;
+    paddleX -= 7; //左を押したらパドルを7動かす
+    //paddleXの範囲もcanvas内として定義する
   }
 
   x += dx; //右方向
@@ -67,13 +69,13 @@ document.addEventListener("keydown", keyDownHandler, false); //keyDownが押さ�
 document.addEventListener("keyUp", keyUpHandler, false); //keyUpが押されたら反応する
 
 function keyDownHandler(e) {
-  //keyDown ボタンを押している時
+  // keyDown ボタンを押している時
   if (e.key == "Right" || e.key == "ArrowRight") {
     //右矢印ArrowRight 右矢印が押されたらtrue
     rightPressed = true;
   } else if (e.key == "Left" || e.key == "ArrowLeft") {
     //左矢印ArrowLeft 左矢印が押されたらfalse
-    rightPressed = true;
+    leftPressed = true;
   }
 }
 
@@ -82,9 +84,9 @@ function keyUpHandler(e) {
   if (e.key == "Right" || e.key == "ArrowRight") {
     //左矢印ArrowRight 左矢印が押されたらfalse
     rightPressed = false;
-  } else if (e.key == "left" || e.key == "ArrowLeft") {
+  } else if (e.key == "Left" || e.key == "ArrowLeft") {
     //左矢印ArrowRight 左矢印が押されたらfalse
-    rightPressed = false;
+    leftPressed = false;
   }
 }
 
